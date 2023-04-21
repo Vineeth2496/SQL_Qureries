@@ -1,0 +1,276 @@
+Working with Security DB (oracle) of queries/commands {SQL}
+List of queries/commands are
+1.	Create structure/table 
+Syntax:	create table <tablename>(data);
+Ex:		create table empp(id int,name varchar2(30),sal float);
+2.	Create table from another table name
+Syntax:	create table newtablename AS Select * from oldtablename;
+Ex:		create table table3 As select * from table1;
+3.	Want to see table structure
+Syntax:	desc tablename;
+Ex:		desc empp;
+4.	Want to see table data.
+Syntax:	select  *  from tablename;
+Ex:		select * from empp;
+5.	Want to write data into table.
+Syntax:	insert into tablename values(data);
+Ex:		insert into Team values(007, ‘vineeth’, 98344837, ‘Hyderabad’, 25000 );
+6.	Want to see only in between table data.
+Syntax:	select columnname from tablename;
+Ex:		select name,no from empp; 
+7.	Want to see Distinct (Different) values in table data.
+Syntax:	select distinct columnname from tablename;
+Ex:		select distinct name from empp;
+8.	Want to see count of Distinct (Different) values in table data.
+Syntax:	select count(distinct columnname) from tablename;
+Ex:		select count(distinct name) from empp;
+9.	Want to see only data above the range
+Syntax:	select * from tablename where columname>value;
+Ex:		select * from team where salary > 30000;
+10.	Want to see only data below the range
+Syntax:	select * from tablename where columname<value;
+Ex:		select * from team where salary < 30000;
+11.	Want to see only data expect the range
+Syntax:	select * from tablename where columname!=value;
+				(or)
+		select * from tablename where columname^=value;
+Ex:		select * from team where salary != 30000;
+				(or)
+		select * from team where salary ^= 30000;
+12.	Want to see only specified row from data.
+Syntax:	select * from tablename where condition;
+Ex:		select * from Team where Address= ‘Hyderabad’;
+13.	Want to see record if all condition separated by AND operator is true
+Syntax:	select * from tablename where condition1 and condtion2;
+Ex:		select * from team where Address= ‘Hyderabad’ and Designation= ‘Agent’; 
+14.	Want to see record if any condition separated by OR operator is true
+Syntax:	select * from tablename where condition1 or condition;
+Ex:		select * from team where Address= ‘Hyderabad’ or Address= ‘Mogualthur’;
+15.	NOT operator displays if the conditions is NOT True.
+Syntax:	select * from tablename where Not condition;
+Ex:		select * from team where not Address= ‘Hyderabad’;
+16.	Sorting Table Data Order By
+Syntax:	select * from tablename order by value.
+Ex:		select * from team order by name;
+17.	Sorting Table Data Descending order
+Syntax:	select * from tablename order by value desc;
+Ex:		Select * from team order by name desc;
+18.	Sorting Table Data Ascending order value1 and Descending order value2.
+Syntax:	Select * from tablename order  by val1 asc, val2 desc;
+Ex:		Select * from team order by name asc, address desc;
+19.	Sorting Table data Order by value1, value2..,
+Syntax:	Select * from tablename order by value1, value2;
+Ex:		Select * from team order by name, designation;
+20.	Insert data into table.
+Syntax:	Insert into tablename(column1, column2, column3) values(value1, value2, value3);
+Ex:		Insert into team(name, designation, salary) values(‘vikram’, ‘major’, 60000);
+21.	Want to check Null values in table.
+Syntax:	Select columnname1, columnname2 from tablename where value is Null;
+Ex:		Select name, id, designation from team where id is Null;
+22.	Want to check No Null values in table.
+Syntax:	Select columnname1, columnname2 from tablename where value is Not Null;
+Ex:		Select name, id, designation from team where id is Not Null;
+23.	Want to update data in table.
+Syntax:	Update tablename set col1=val1, col2=val2 where id=val;
+Ex:		Update team set id=007, name= ‘James Bond’ where id=005;
+Note:	Be careful will updating records. If you omit the ‘Where’ clause then, All records will be updated.
+24.	Delete record from table data.
+Syntax:	Delete from tablename where column=value;
+Ex:	 	Delete from team where name= ‘Sandeep’;
+25.	Delete all Table data.
+Syntax:	Delete from tablename;
+Ex:		Delete from team;
+26.	Aliases Column name from Table
+Syntax:	Select oldcolumname AS newcolumname from tablename;
+Ex:		Select data AS data1 from table1;
+27.	Rename to Existing table
+Syntax:	rename oldtablename to newtablename;
+Ex:		rename table3 to table4;
+28.	Remove Entire table from Database.
+Syntax:	Drop table tablename;
+Ex:		Drop table team;
+29.	Alter table by adding columns, removing and modifying data.
+a)	Alter table by adding column
+Syntax:	Alter table tablename ADD newcolumnname datatype;
+Ex:	Alter table table1 Add data int;
+b)	Alter table by modify column
+Syntax:	Alter table tablename MODIFY columnname datatype	// Data type size can be Altered
+Ex:	Alter table table1 MODIFY data number;
+c)	Alter table by removing column(drop column)
+Syntax:	Alter table tablename DROP COLUMN columname; 
+Ex: 	Alter table table1 Drop Column salary;
+d)	Rename or change column name.
+Syntax:	Alter table tablename RENAME COLUMN oldcolumname to newcolumnname; 
+Ex: 	Alter table table1 Rename Column data to data1;
+30.	Select smallest value from the table.
+Syntax:	Select Min(columname) from tablename;
+				(or)	
+		Select Min(columname) As SmallestValue from tablename;
+Ex:		Select Min(Id) from team;
+			(or)
+Select Min(Id) As SmallestId from team;
+31.	Select largest value from the table.
+Syntax:	Select Max(columname) from tablename;
+			(or)	
+	Select Max(columname) As LargestValue from tablename;
+Ex:		Select Max(Id) from team;
+			(or)
+Select Max(Id) As LargestId from team;
+32.	Want count of table data column.
+Syntax:	Select count(value) from tablename;
+Ex:		Select count(name) from team;
+33.	Want compute Average of Integer data in table.
+Syntax:	Select Avg(value) from tablename;
+Ex:		Select Avg(id) from team;
+34.	Want compute Sum of Integer data in table.
+Syntax:	Select Sum(value) from tablename;
+Ex:		Select sum(id) from team;
+35.	Want to Add values to Data in table.
+Syntax:	select column1,column1+200 from tablename;
+Ex:		select id,id+200 from table1;
+36.	Like Operator
+Like operator is used in a ‘where’ clause to search for a specified pattern in a column.
+2 wildcard are used in conjunction with like operator
+•	The percentage sign (%) represents zero, one or multiple characters.
+•	Underscore sign (_) represents one, single character.
+a)	To get Starting letter of word  ‘a’ from table data
+Syntax:	Select * from tablename where columnname Like ‘a%’;
+Ex:	select  * from team where Address Like ‘a%’;
+b)	To get Last letter of word ‘a’ from table data.
+Syntax:	Select * from tablename where columname Like ‘%a’
+Ex:	Select * from team where Address Like ‘%a’;
+c)	To get in between data from table data.
+Syntax:	select * from tablename where columnname Like ‘%or%’;
+Ex:	select * from team where Address Like ‘%or%’;
+d)	To get Table data with Second letter from word.
+Syntax:	select * from tablename where columnname Like ‘_a%’;
+Ex:	select * from team where Address Like ‘_a%’;
+e)	To get Table data with first letter ‘a’ and last letter ‘o’ from word.
+Syntax:	select * from tablename where columnname Like ‘a%o’;
+Ex:	select * from team where Address Like ‘a%o’;
+f)	To get Table data with first letter not start with ‘a’ fom word.
+Syntax:	select * from tablename where columnname Not Like ‘a%’;
+Ex:	select * from team where Address Not Like ‘a%’;
+37.	Wildcards characters
+a)	% 	Represents zero or more characters	bl%	finds	bl, black, blue,and blub.
+Syntax:	select * from tablename where columname Like ‘val%’;
+Ex:	select * from team where name like ‘D%’;
+b)	_	Represents single character		h_t	finds	hot, hat and hit.
+Syntax:	select * from tablename where columname Like ‘D_n’;
+Ex:	select * from team where name like ‘D_n’;
+c)	[]	Represents any single character within brackets	h[ao]t	finds	hot and hat, but not hit.
+Syntax:	select * from tablename where columname Like ‘J[ao]me’;
+Ex:	select * from team where name like ‘J[ao]m’;
+d)	^	Represents any character not in the brackets  	h[^ao]t	finds 	hit, but not hot and hit.
+Syntax:	select * from tablename where columname Like ‘D[^oa]n’;
+Ex:	select * from team where name like ‘D[^a]n’;
+e)	-	Represents any single character with in Specified range	c[a-b]t	finds cat and cbt.
+Syntax:	select * from tablename where columname Like ‘D[a-o]n’;
+Ex:	select * from team where name like ‘D[a-o]n’;
+38.	IN operator
+a)	Want get data IN table
+Syntax:	select * from tablename where columnname IN (‘value’);
+Ex:	select  * from team where name IN (‘Don’);
+b)	Want get data other data from table
+Syntax:	select * from tablename where columnname not IN (‘value’);
+Ex:	select  * from team where name  not IN (‘Don’);
+39.	Between Operator
+a)	Want to get data in between table.
+Syntax:	select * from tablename where columnname between value1 and value2;
+Ex:	select  * from team where Id between  7 and 9;
+b)	Want to get data not in between table.
+Syntax:	select * from tablename where columnname Not between value1 and value2;
+Ex:	select  * from team where Id  Not between  7 and 9;
+40.	Alias is used to give a table, or a column in a table, temporary name.
+Syntax:	select column_name AS Alias_name from tablename;
+Ex:	select Id As EmpID from team;
+41.	UNION Operator
+Note:	Select statement within Union must have same number of columns
+	The Column must have similar data types.
+	The columns in every select statement must also be in same order.
+Syntax:	Select columnname from tablename1
+		Union
+		Select columnname from tablename2
+//		Order by columnname;
+Ex:		select name from table1
+		Union
+		Select contactname from table2
+		Order by name;
+42.	Create New DATABASE
+Syntax:	Create database databasename;
+Ex:	Create database testDB;
+43.	Delete DATABASE
+Syntax:	Drop database databasename;
+Ex:	Drop database testDB;
+44.	Delete Entire data inside table but not table.
+Syntax:	TURNCATE table tablename;
+Ex:	Turncate table table3;
+45.	NOT NULL constraint enforces a column to NOT accept NULL values.
+Syntax:	Create table tablename(columnname1 datatype NOT NULL, columnname2 datatype NOT NULL);
+Ex:	Create table table3(ID int NOT NULL, Name varcha2(10) NOT NULL);
+46.	UNIQUE constraint ensure that all values in the column are different.
+Syntax:	Create table tablename(columnname1 datatype UNIQUE, columnname2 datatype UNIQUE);
+Ex:	Create table table3(ID int UNIQUE, Name varcha2(10) UNIQUE);
+47.	PRIMARY KEY constraint ensure that all values in the column are different and Not Null.
+// A table can have only ONE primary key, and in the table, this primary key can consist of single or multiple columns (fields).
+Syntax1:	Create table tablename(columnname1 datatype UNIQUE, columnname2 datatype Primary Key);
+Ex1:	Create table table3(ID int UNIQUE, Name varcha2(10) Primary Key);
+Syntax2:	Create table tablename(columnname1 datatype NOT NULL, columnname2 datatype NOT NULL, pk_tablename Primary Key(columname1, columname2));
+Ex2:	Create table table3(ID int NOT NULL, Name varcha2(10) NOT NULL, L_Name varchar2(10), PK_table3  Primary Key(ID, Name));
+
+48.	FOREIGN KEY constraint is used to prevent actions that would destroy links between tables.
+A FOREIGN KEY is a field (or collection of fields) in one table, that refers to the PRIMARY KEY in another table. The table with the foreign key is called the child table, and the table with the primary key is called the referenced or parent table.
+Syntax1:	Create table tablename
+(columnname1 datatype NOT NULL, 
+columnname2 datatype, 
+Primary Key(columnname1), 
+Foreign Key(columnname2) References ParentTablename(columnname2) );
+Ex1:	Create table table3
+(ID int NOT NULL, 
+Name varcha2(10) 
+Primary Key(ID),
+Foreign key (Name) References Table2 (Name));
+49.	CHECK constraint is used to limit the value range that can be placed in the column.
+Syntax:	Create table tablename(columnname1 datatype , columnname2 datatype check(coulmname2>=value));
+Ex:	Create table table3(ID int Not Null, Name varcha2(10) Not Null, FName varcha2(10), Age int, check(Age>=18));
+50.	 CREATE INDEX statement is used to create indexes in tables. Indexes are used to retrieve data from the database more quickly than otherwise. The users cannot see the indexes, they are just used to speed up searches/queries.
+Syntax:	Create Index Indexname on tablename(columnname1, columnname2, coulmname3, ….);
+Ex:	Create Index Index1 on table3(ID , Name, FName );
+51.	DROP INDEX (REMOVE) statement is used to delete an index in a table.
+Syntax:	Drop INDEX Indexname;
+Ex:	Drop INDEX Index1;
+52.	INNER JOIN(EQUI JOIN) of two table with the values in table are equal.
+Syntax:	select reqcolumname1(Table1 or 2), reqcolumname2(Table1 or 2), reqcolumname1 (Table1or2) from tablename1, tablename2
+	Where tableaname1.columnname=tablename2.columname;
+Ex:	select orderID, DeliveryID, CustomerName, Address
+From orders, customers 
+Where order.customerID=customers. customerID;
+53. Find nth values from table
+Syntax:	select * from(
+	select columnname1, columnname2, dense_rank() 
+	over(order by columnname2 desc)userdefinedcolumnname from Tablename) 
+	where userdefinedcolumnname=&ne;
+
+	To find 2nd highest sal set n = 2
+	To find 3rd highest sal set n = 3 and so on.
+
+Example: select * from(
+	select Employee_Name, Salary, dense_rank()
+	over(order by Salary desc)Rank from Empolyee)
+	where Rank=&n;
+
+
+	To find 2nd highest sal set n = 2
+	To find 3rd highest sal set n = 3 and so on.
+54.	 Rename Table Name
+Synatx:	Rename OldTableName to NewTableName;
+Ex:		Rename Employe to Team;
+55.	Save the Table data and Recover Deleted Data
+Syntax:	commit;		// To Save Data after insert/modify/delect/update
+Syntax:	Rollback;	// To Restore Deleted/Before Updated Data
+56.	 Create Table for Bytes Data
+Syntax:	create table tablename(columnname BLOB);		//	Binary Large Object
+Ex:		create table insta(data BLOB);
+57.	Create Table for Character Data
+Syntax:	create table tablename(columnname CLOB);		//	Character Large Object
+Ex:		create table insta(data CLOB);
